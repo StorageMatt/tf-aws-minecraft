@@ -6,9 +6,13 @@ resource "aws_kms_key" "tf_bucket_encrypt_at_rest" {
   description             = "This key is used to encrypt bucket objects"
   deletion_window_in_days = 10
   enable_key_rotation     = true
-  tags = {
-    Name = "Terraform Key for s3 bucket at rest encryption"
-  }
+
+  tags = merge(
+    {
+      Name = "Terraform Key for s3 bucket at rest encryption"
+    },
+    var.additional_tags,
+  )
 }
 
 resource "aws_s3_bucket" "terraform_remotestate" {
@@ -33,9 +37,12 @@ resource "aws_s3_bucket" "terraform_remotestate" {
     target_prefix = "log/"
   }
 
-  tags = {
-    Name = "Terraform s3 State Bucket"
-  }
+  tags = merge(
+    {
+      Name = "Terraform s3 State Bucket"
+    },
+    var.additional_tags,
+  )
 }
 
 resource "aws_s3_bucket" "tf_state_log_bucket" {

@@ -8,7 +8,10 @@ resource "aws_dynamodb_table" "terraform_statelock" {
     name = "LockID"
     type = "S"
   }
-  tags = {
-    Name = "Terraform State Locking table"
-  }
+  tags = merge(
+    {
+      Name = "Terraform State Locking table"
+    },
+    var.additional_tags,
+  )
 }

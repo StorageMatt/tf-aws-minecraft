@@ -15,4 +15,11 @@ terraform {
 provider "aws" {
   profile = var.aws_credentials_profile
   region  = var.aws_region
+  default_tags {
+    tags = {
+      Name = "Minecraft"
+      Project = "Minecraft"
+      DeployedBy = "Terraform"
+    }
+  }
 }

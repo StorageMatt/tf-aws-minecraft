@@ -1,7 +1,7 @@
 variable "additional_tags" {
   description = "Additional resource tags"
   type        = map(string)
-  default     = { Name = "Minecraft" }
+  default     = {}
 }
 
 variable "asg_desired_capacity" {

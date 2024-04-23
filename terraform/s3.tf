@@ -8,9 +8,12 @@ resource "random_id" "state_bucket_rand" {
 resource "aws_s3_bucket" "minecraft_data" {
   bucket = "${var.minecraft_bucket_name}-${random_id.state_bucket_rand.dec}"
 
-  tags = {
-    Name = "Terraform minecraft server Bucket"
-  }
+  tags = merge(
+    {
+      Name = "Terraform minecraft server Bucket"
+    },
+    var.additional_tags,
+  )
 }
 
 resource "aws_s3_object" "world_data" {
