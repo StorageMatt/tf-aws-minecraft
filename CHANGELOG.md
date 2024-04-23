@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2).
 
 Dates in this file are in format of YYYY-MM-DD (2019-12-13 means 13th of December 2019).
 
+## [[0.3.0]](https://github.com/kmalkin/tf-aws-minecraft/releases/tag/0.3.0) - 2024-04-25
+### Changed
+* Versions to latest and code to suit. [@storagematt](https://github.com/storagematt)
+
 ## [[0.2.0]](https://github.com/kmalkin/tf-aws-minecraft/releases/tag/0.0.2) - 2022-03-25
 ### Added
 * Added capability to have Spot fleet backed asg. (World backups become very important at this point.)[@kmalkin](https://github.com/kmalkin)

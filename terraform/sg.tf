@@ -7,7 +7,7 @@ resource "aws_security_group" "server_security_group" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["${var.ingress_access_cidr}"]
+    cidr_blocks = [var.ingress_access_cidr]
   }
 
   ingress {
@@ -15,7 +15,7 @@ resource "aws_security_group" "server_security_group" {
     from_port   = 25575
     to_port     = 25575
     protocol    = "tcp"
-    cidr_blocks = ["${var.ingress_access_cidr}"]
+    cidr_blocks = [var.ingress_access_cidr]
   }
 
   #tfsec:ignore:aws-vpc-no-public-ingress-sgr

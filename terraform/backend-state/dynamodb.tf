@@ -1,4 +1,4 @@
-resource "aws_dynamodb_table" "terraform_statelock" {
+resource "aws_dynamodb_table" "remote_state" {
   name           = var.aws_dynamodb_table_name
   read_capacity  = 20
   write_capacity = 20
@@ -10,7 +10,7 @@ resource "aws_dynamodb_table" "terraform_statelock" {
   }
   tags = merge(
     {
-      Name = "Terraform State Locking table"
+      Name = "Minecraft State Locking table"
     },
     var.additional_tags,
   )

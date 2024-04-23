@@ -23,6 +23,7 @@ EOF
   )
 }
 
+#tfsec:ignore:aws-iam-no-policy-wildcards
 resource "aws_iam_policy" "minecraft_s3_access_policy" {
   name        = "minecraft_s3_access_policy"
   description = "allow access to specific minecraft backup bucket"

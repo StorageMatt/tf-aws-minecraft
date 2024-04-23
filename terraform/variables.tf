@@ -10,18 +10,6 @@ variable "asg_desired_capacity" {
   default     = 1
 }
 
-variable "asg_on_demand_base_capacity" {
-  description = "Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances"
-  type        = number
-  default     = 0
-}
-
-variable "asg_on_demand_percentage_above_base_capacity" {
-  description = "Percentage split between on-demand and Spot instances above the base on-demand capacity. Default will always assume you want 0% on demand above the base capacity"
-  type        = number
-  default     = 0
-}
-
 variable "asg_max_size" {
   description = "Autoscaling group maximum size"
   type        = number
@@ -34,10 +22,22 @@ variable "asg_min_size" {
   default     = 0
 }
 
-variable "associate_public_ip_address" {
-  description = "Associate a public ip address with the instances."
-  type        = bool
-  default     = false
+# variable "associate_public_ip_address" {
+#   description = "Associate a public ip address with the instances."
+#   type        = bool
+#   default     = false
+# }
+
+variable "asg_on_demand_base_capacity" {
+  description = "Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances"
+  type        = number
+  default     = 0
+}
+
+variable "asg_on_demand_percentage_above_base_capacity" {
+  description = "Percentage split between on-demand and Spot instances above the base on-demand capacity. Default will always assume you want 0% on demand above the base capacity"
+  type        = number
+  default     = 0
 }
 
 variable "aws_credentials_profile" {
@@ -103,22 +103,40 @@ variable "minecraft_bucket_name" {
   default     = "minecraft-server-world-data"
 }
 
-variable "minecraft_bucket_world_directory_object" {
-  description = "Folder object in the bucket where world data backups are stored"
-  type        = string
-  default     = "minecraft/minecraft_server_word_data_backups/"
-}
-
 variable "minecraft_bucket_whitelist_directory_object" {
   description = "Folder object in the bucket where world data backups are stored"
   type        = string
   default     = "minecraft/minecraft_server_settings_backups/"
 }
 
-variable "minecraft_server_whitelist" {
-  description = "Turn on and off the server whitelist capability with true/false"
+variable "minecraft_bucket_world_directory_object" {
+  description = "Folder object in the bucket where world data backups are stored"
+  type        = string
+  default     = "minecraft/minecraft_server_word_data_backups/"
+}
+
+variable "minecraft_server_hardcore_mode" {
+  description = "Run server in permadeath mode"
   type        = string
   default     = "false"
+}
+
+variable "minecraft_server_max_players" {
+  description = "Max number of players allowed on server"
+  type        = number
+  default     = 10
+}
+
+variable "minecraft_server_memory" {
+  description = "How much Heap Memory to dedicate to the jvm (in MB)"
+  type        = string
+  default     = "512"
+}
+
+variable "minecraft_server_motd" {
+  description = "Server Message of the Day"
+  type        = string
+  default     = "Welcome to Minecraft"
 }
 
 variable "minecraft_server_rcon" {
@@ -133,28 +151,10 @@ variable "minecraft_server_rcon_pass" {
   default     = "please_change_me_if_using_rcon"
 }
 
-variable "minecraft_server_max_players" {
-  description = "Max number of players allowed on server"
-  type        = number
-  default     = 10
-}
-
-variable "minecraft_server_hardcore_mode" {
-  description = "Run server in permadeath mode"
+variable "minecraft_server_whitelist" {
+  description = "Turn on and off the server whitelist capability with true/false"
   type        = string
   default     = "false"
-}
-
-variable "minecraft_server_motd" {
-  description = "Server Message of the Day"
-  type        = string
-  default     = "Welcome to Minecraft"
-}
-
-variable "minecraft_server_memory" {
-  description = "How much Heap Memory to dedicate to the jvm (in MB)"
-  type        = string
-  default     = "512"
 }
 
 variable "minecraft_version_selector" {
