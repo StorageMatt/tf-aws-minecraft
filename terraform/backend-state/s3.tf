@@ -70,6 +70,14 @@ resource "aws_s3_bucket_logging" "remote_state" {
   target_prefix = "log/"
 }
 
+resource "aws_s3_bucket_public_access_block" "remote_state" {
+  bucket = aws_s3_bucket.remote_state.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
 
 resource "aws_s3_bucket" "remote_state_logs" {
   bucket = "${var.aws_s3_state_bucket_name}-${random_id.remote_state.dec}-logging"
@@ -136,4 +144,13 @@ resource "aws_s3_bucket_lifecycle_configuration" "bucket-remote_state_logs" {
 
     status = "Enabled"
   }
+}
+
+resource "aws_s3_bucket_public_access_block" "remote_state_logs" {
+  bucket = aws_s3_bucket.remote_state_logs.id
+
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
