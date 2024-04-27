@@ -24,8 +24,8 @@ module "hennge_split_spot_on_demand_asg" {
       )
     },
   ]
-  instance_types              = var.instance_types_array
-  user_data                   = data.template_file.user_data.rendered
+  instance_types = var.instance_types_array
+  user_data = local.user_data
   key_name                    = "${var.prefix_identifier}-${var.key_pair_name}"
   enable_monitoring           = false
   associate_public_ip_address = true

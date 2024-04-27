@@ -20,7 +20,7 @@ resource "aws_security_group" "server_security_group" {
 
   #tfsec:ignore:aws-vpc-no-public-ingress-sgr
   ingress {
-    description = "Minecraft Server Rule #1"
+    description = "Minecraft Server Rule 1"
     from_port   = 25565
     to_port     = 25565
     protocol    = "tcp"
@@ -29,7 +29,7 @@ resource "aws_security_group" "server_security_group" {
 
   #tfsec:ignore:aws-vpc-no-public-ingress-sgr
   ingress {
-    description = "Minecraft Server Rule #2"
+    description = "Minecraft Server Rule 2"
     from_port   = 25565
     to_port     = 25565
     protocol    = "udp"
@@ -38,7 +38,7 @@ resource "aws_security_group" "server_security_group" {
 
   #tfsec:ignore:aws-vpc-no-public-egress-sgr
   egress {
-    description = "Minecraft Server Rule #3"
+    description = "Minecraft Server Rule 3"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"

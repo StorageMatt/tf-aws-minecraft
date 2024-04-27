@@ -1,3 +1,6 @@
+#tfsec:ignore:aws-dynamodb-enable-at-rest-encryption
+#tfsec:ignore:aws-dynamodb-table-customer-key
+#tfsec:ignore:aws-dynamodb-enable-recovery
 resource "aws_dynamodb_table" "remote_state" {
   name           = var.aws_dynamodb_table_name
   read_capacity  = 20

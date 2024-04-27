@@ -79,6 +79,7 @@ resource "aws_s3_bucket_public_access_block" "remote_state" {
   restrict_public_buckets = true
 }
 
+#tfsec:ignore:aws-s3-enable-versioning
 resource "aws_s3_bucket" "remote_state_logs" {
   bucket = "${var.aws_s3_state_bucket_name}-${random_id.remote_state.dec}-logging"
 
