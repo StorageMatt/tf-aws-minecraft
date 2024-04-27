@@ -1,5 +1,10 @@
 # REMOTE STATE
 
+Creates an S3 bucket (with partner logging bucket) for the state file of the parent project to be stored in,
+ along with an encrypted DynamoDB table for state locking.
+
+The state file for this specific Terraform deployment will be saved locally in the current working directory.
+
 <!-- markdownlint-disable -->
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

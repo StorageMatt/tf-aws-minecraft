@@ -5,10 +5,6 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
-    random = {
-      source  = "hashicorp/random"
-      version = "3.6.1"
-    }
   }
 }
 
@@ -17,7 +13,7 @@ provider "aws" {
   region  = var.aws_region
   default_tags {
     tags = {
-      Name       = "Minecraft"
+      Name       = var.resource_name_prefix
       Project    = "Minecraft"
       DeployedBy = "Terraform"
     }

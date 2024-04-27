@@ -1,12 +1,10 @@
-resource "random_id" "state_bucket_rand" {
-  byte_length = 2
-}
+data "aws_caller_identity" "current" {}
 
 #tfsec:ignore:aws-s3-enable-bucket-encryption
 #tfsec:ignore:aws-s3-encryption-customer-key
 #tfsec:ignore:aws-s3-enable-bucket-logging
 resource "aws_s3_bucket" "minecraft_data" {
-  bucket = "${var.minecraft_bucket_name}-${random_id.state_bucket_rand.dec}"
+  bucket = "${var.minecraft_bucket_name}-${data.aws_caller_identity.current.account_id}"
 
   tags = merge(
     {

@@ -1,6 +1,4 @@
-resource "random_id" "remote_state" {
-  byte_length = 2
-}
+data "aws_caller_identity" "current" {}
 
 resource "aws_s3_object" "remote_state" {
   bucket = aws_s3_bucket.remote_state.id
@@ -14,18 +12,18 @@ resource "aws_kms_key" "remote_state" {
 
   tags = merge(
     {
-      Name = "Minecraft Key for s3 bucket at rest encryption"
+      Name = "${var.resource_name_prefix} Key for s3 bucket at rest encryption"
     },
     var.additional_tags,
   )
 }
 
 resource "aws_s3_bucket" "remote_state" {
-  bucket = "${var.aws_s3_state_bucket_name}-${random_id.remote_state.dec}"
+  bucket = "${var.resource_name_prefix}-${var.aws_s3_state_bucket_name}-${data.aws_caller_identity.current.account_id}"
 
   tags = merge(
     {
-      Name = "Minecraft State Bucket"
+      Name = "${var.resource_name_prefix} State Bucket"
     },
     var.additional_tags,
   )
@@ -81,11 +79,11 @@ resource "aws_s3_bucket_public_access_block" "remote_state" {
 
 #tfsec:ignore:aws-s3-enable-versioning
 resource "aws_s3_bucket" "remote_state_logs" {
-  bucket = "${var.aws_s3_state_bucket_name}-${random_id.remote_state.dec}-logging"
+bucket = "${var.resource_name_prefix}-${var.aws_s3_state_bucket_name}-${data.aws_caller_identity.current.account_id}-logging"
 
   tags = merge(
     {
-      Name = "Minecraft State Logging Bucket"
+      Name = "${var.resource_name_prefix} State Logging Bucket"
     },
     var.additional_tags,
   )

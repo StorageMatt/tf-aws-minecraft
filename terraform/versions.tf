@@ -1,5 +1,6 @@
 terraform {
   backend "s3" {
+    # bucket = "Minecraft-tfstate-476271530477" #* Here to provide an example
     key            = "terraform-aws/minecraft_server/terraform.tfstate"
     dynamodb_table = "terraform-statelock"
     region         = "eu-west-2"
@@ -13,10 +14,6 @@ terraform {
     tls = {
       source  = "hashicorp/tls"
       version = "4.0.5"
-    }
-    random = {
-      source  = "hashicorp/random"
-      version = "3.6.1"
     }
   }
 }

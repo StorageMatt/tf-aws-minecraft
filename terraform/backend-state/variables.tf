@@ -25,5 +25,11 @@ variable "aws_region" {
 variable "aws_s3_state_bucket_name" {
   description = "Name for the backend state bucket"
   type        = string
-  default     = "minecraft-tfstate"
+  default     = "tfstate"
+}
+
+variable "resource_name_prefix" {
+  description = "Name prefix for all resources"
+  type        = string
+  default     = "Minecraft"
 }
