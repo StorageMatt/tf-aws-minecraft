@@ -22,12 +22,6 @@ variable "asg_min_size" {
   default     = 0
 }
 
-# variable "associate_public_ip_address" {
-#   description = "Associate a public ip address with the instances."
-#   type        = bool
-#   default     = false
-# }
-
 variable "asg_on_demand_base_capacity" {
   description = "Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances"
   type        = number
@@ -38,6 +32,12 @@ variable "asg_on_demand_percentage_above_base_capacity" {
   description = "Percentage split between on-demand and Spot instances above the base on-demand capacity. Default will always assume you want 0% on demand above the base capacity"
   type        = number
   default     = 0
+}
+
+variable "associate_public_ip_address" {
+  description = "Associate a public ip address with the instances."
+  type        = bool
+  default     = false
 }
 
 variable "aws_credentials_profile" {

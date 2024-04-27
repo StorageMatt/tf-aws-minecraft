@@ -1,4 +1,4 @@
-locals{
+locals {
   user_data = templatefile("${path.module}/templates/mc-init.sh.tpl", {
     instance_hostname                = var.instance_hostname
     minecraft_server_memory          = var.minecraft_server_memory

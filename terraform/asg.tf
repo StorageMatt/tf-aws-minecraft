@@ -24,11 +24,11 @@ module "hennge_split_spot_on_demand_asg" {
       )
     },
   ]
-  instance_types = var.instance_types_array
-  user_data = local.user_data
+  instance_types              = var.instance_types_array
+  user_data                   = local.user_data
   key_name                    = "${var.prefix_identifier}-${var.key_pair_name}"
   enable_monitoring           = false
-  associate_public_ip_address = true
+  associate_public_ip_address = var.associate_public_ip_address
   iam_instance_profile        = aws_iam_instance_profile.minecraft_s3_access_profile.arn
 
   asg_name                                 = "${var.prefix_identifier}-asg"

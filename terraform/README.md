@@ -56,6 +56,7 @@
 | <a name="input_asg_min_size"></a> [asg\_min\_size](#input\_asg\_min\_size) | Autoscaling group minimum size | `number` | `0` | no |
 | <a name="input_asg_on_demand_base_capacity"></a> [asg\_on\_demand\_base\_capacity](#input\_asg\_on\_demand\_base\_capacity) | Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances | `number` | `0` | no |
 | <a name="input_asg_on_demand_percentage_above_base_capacity"></a> [asg\_on\_demand\_percentage\_above\_base\_capacity](#input\_asg\_on\_demand\_percentage\_above\_base\_capacity) | Percentage split between on-demand and Spot instances above the base on-demand capacity. Default will always assume you want 0% on demand above the base capacity | `number` | `0` | no |
+| <a name="input_associate_public_ip_address"></a> [associate\_public\_ip\_address](#input\_associate\_public\_ip\_address) | Associate a public ip address with the instances. | `bool` | `false` | no |
 | <a name="input_aws_credentials_profile"></a> [aws\_credentials\_profile](#input\_aws\_credentials\_profile) | High level profile name that the terraform uses for aws access to create new role/policy/user for pihole deployment | `string` | n/a | yes |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | Region of aws to use | `string` | `"eu-west-2"` | no |
 | <a name="input_enable_on_demand"></a> [enable\_on\_demand](#input\_enable\_on\_demand) | Determins if or not you want MC on on demand ec2 instance. | `bool` | `false` | no |

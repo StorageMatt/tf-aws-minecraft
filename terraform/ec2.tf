@@ -12,7 +12,7 @@ resource "aws_instance" "ec2" {
     )
   }
   iam_instance_profile = aws_iam_instance_profile.minecraft_s3_access_profile.name
-  user_data = local.user_data
+  user_data            = local.user_data
   tags = merge(
     {},
     var.additional_tags,
